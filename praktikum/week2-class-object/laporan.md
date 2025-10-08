@@ -2,9 +2,9 @@
 Topik: Class dan Object (Produk Pertanian)
 
 ## Identitas
-- Nama  : Defita Dwi Wulandary
-- NIM   : 240202856
-- Kelas : 3IKRA
+- Nama    : Defita Dwi Wulandary
+- NIM     : 240202856
+- Kelas   : 3IKRA
 
 ---
 
