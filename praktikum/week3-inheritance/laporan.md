@@ -143,11 +143,11 @@ public class MainInheritance {
 }
 
 ```
-)
+
 ---
 
 ## Hasil Eksekusi
-
+![Screenshot hasil](screenshots/output.png)
 
 
 ---
