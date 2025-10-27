@@ -167,18 +167,14 @@ public class MainPolymorphism {
 ---
 
 ## Hasil Eksekusi
-(Sertakan screenshot hasil eksekusi program.  
 ![Screenshot hasil](screenshots/hasil.png)
-)
 ---
 
 ## Analisis
-(
 - Overloading terjadi pada method tambahStok() di class Produk, yang memiliki dua versi parameter (int dan double).
 - Overriding terjadi di setiap subclass (Benih, Pupuk, AlatPertanian) pada method getInfo().
 - Dynamic Binding terjadi saat array Produk[] daftarProduk menampung berbagai objek dan Java otomatis memanggil getInfo() sesuai jenis objek aktual.
 - Program berjalan dengan baik tanpa error, menunjukkan konsep polymorphism diterapkan dengan benar. 
-)
 ---
 
 ## Kesimpulan  
