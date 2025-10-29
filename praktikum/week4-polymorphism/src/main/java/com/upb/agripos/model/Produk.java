@@ -1,10 +1,10 @@
 package main.java.com.upb.agripos.model;
 
 public class Produk {
-    private String kode;
-    private String nama;
-    private double harga;
-    private int stok;
+    protected String kode;
+    protected String nama;
+    protected double harga;
+    protected int stok;
 
     public Produk(String kode, String nama, double harga, int stok) {
         this.kode = kode;
@@ -13,6 +13,7 @@ public class Produk {
         this.stok = stok;
     }
 
+    // Overloading
     public void tambahStok(int jumlah) {
         this.stok += jumlah;
     }
@@ -21,24 +22,7 @@ public class Produk {
         this.stok += (int) jumlah;
     }
 
-    // Tambahkan getter di bawah ini
-    public String getKode() {
-        return kode;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public double getHarga() {
-        return harga;
-    }
-
-    public int getStok() {
-        return stok;
-    }
-
     public String getInfo() {
-        return "Produk: " + nama + " (Kode: " + kode + ")";
+        return "Produk: " + nama + "\nKode: " + kode + "\nHarga: Rp" + harga + "\nStok: " + stok;
     }
 }

@@ -40,10 +40,10 @@ Konsep ini memungkinkan objek-objek dari subclass yang berbeda untuk merespons m
 package main.java.com.upb.agripos.model;
 
 public class Produk {
-    private String kode;
-    private String nama;
-    private double harga;
-    private int stok;
+    protected String kode;
+    protected String nama;
+    protected double harga;
+    protected int stok;
 
     public Produk(String kode, String nama, double harga, int stok) {
         this.kode = kode;
@@ -52,6 +52,7 @@ public class Produk {
         this.stok = stok;
     }
 
+    // Overloading
     public void tambahStok(int jumlah) {
         this.stok += jumlah;
     }
@@ -60,27 +61,13 @@ public class Produk {
         this.stok += (int) jumlah;
     }
 
-    // Tambahkan getter di bawah ini
-    public String getKode() {
-        return kode;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public double getHarga() {
-        return harga;
-    }
-
-    public int getStok() {
-        return stok;
-    }
-
     public String getInfo() {
-        return "Produk: " + nama + " (Kode: " + kode + ")";
+        return "Produk: " + nama + "\nKode: " + kode + "\nHarga: Rp" + harga + "\nStok: " + stok;
     }
 }
+
+
+
 
 ```Benih
 package main.java.com.upb.agripos.model;
@@ -95,9 +82,11 @@ public class Benih extends Produk {
 
     @Override
     public String getInfo() {
-        return "Benih: " + getNama() + " (Kode: " + getKode() + "), Varietas: " + varietas;
+        return super.getInfo() + "\nVarietas: " + varietas;
     }
 }
+
+
 
 ```Pupuk
 package main.java.com.upb.agripos.model;
@@ -112,9 +101,30 @@ public class Pupuk extends Produk {
 
     @Override
     public String getInfo() {
-        return "Pupuk: " + getNama() + " (Kode: " + getKode() + "), Jenis: " + jenis;
+        return super.getInfo() + "\nJenis: " + jenis;
     }
 }
+
+
+
+```ObatHama
+package main.java.com.upb.agripos.model;
+
+public class ObatHama extends Produk {
+    private String bahanAktif;
+
+    public ObatHama(String kode, String nama, double harga, int stok, String bahanAktif) {
+        super(kode, nama, harga, stok);
+        this.bahanAktif = bahanAktif;
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo() + "\nBahan Aktif: " + bahanAktif;
+    }
+}
+
+
 
 ```CreditBy
 package main.java.com.upb.agripos.util;
@@ -136,32 +146,22 @@ import main.java.com.upb.agripos.util.CreditBy;
 
 public class MainPolymorphism {
     public static void main(String[] args) {
-
-        // Membuat array berisi berbagai jenis produk (Polymorphism)
         Produk[] daftarProduk = {
-            new Benih("BNH-001", "Benih Padi IR64", 25000, 100, "IR64"),
-            new Pupuk("PPK-101", "Pupuk Urea", 350000, 50, "Urea"),
-            new AlatPertanian("ALT-501", "Cangkul Baja", 90000, 15, "Baja")
+            new Benih("BNH-001", "Benih Padi", 25000, 100, "IR64"),
+            new Pupuk("PPK-101", "Pupuk Urea", 350000, 40, "Urea"),
+            new AlatPertanian("ALT-501", "Cangkul Baja", 90000, 15, "Baja"),
+            new ObatHama("OBT-301", "Racun Serangga", 120000, 10 , "Deltamethrin")
         };
 
-        // Demonstrasi Dynamic Binding (pemanggilan method getInfo() berbeda-beda)
-        System.out.println("=== Informasi Produk AgriPOS ===");
         for (Produk p : daftarProduk) {
             System.out.println(p.getInfo());
+            System.out.println("--------------------");
         }
 
-        // Demonstrasi Overloading
-        System.out.println("\n=== Demonstrasi Overloading ===");
-        Benih benih = new Benih("BNH-002", "Benih Jagung Bisi", 20000, 80, "Bisi 2");
-        System.out.println("Stok awal: " + benih.getStok());
-        benih.tambahStok(20);   // versi int
-        benih.tambahStok(5.5);  // versi double
-        System.out.println("Stok setelah ditambah: " + benih.getStok());
-
-        // Identitas Mahasiswa
-        CreditBy.print("240202856", "Defita Dwi Wulandary");
+        CreditBy.print("240202856", "Defita Dwi Wulanadary");
     }
 }
+
 
 ```
 ---

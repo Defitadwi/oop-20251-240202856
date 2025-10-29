@@ -10,6 +10,6 @@ public class Pupuk extends Produk {
 
     @Override
     public String getInfo() {
-        return "Pupuk: " + getNama() + " (Kode: " + getKode() + "), Jenis: " + jenis;
+        return super.getInfo() + "\nJenis: " + jenis;
     }
 }

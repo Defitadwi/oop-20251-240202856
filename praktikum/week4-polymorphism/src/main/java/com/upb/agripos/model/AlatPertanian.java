@@ -10,6 +10,6 @@ public class AlatPertanian extends Produk {
 
     @Override
     public String getInfo() {
-        return "Alat Pertanian: " + getNama() + " (Kode: " + getKode() + "), Bahan: " + bahan;
+        return super.getInfo() + "\nBahan: " + bahan;
     }
 }
