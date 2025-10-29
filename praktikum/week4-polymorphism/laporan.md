@@ -190,10 +190,10 @@ public class MainPolymorphism {
 Sedangkan overriding terjadi ketika subclass mengganti implementasi method yang sudah ada di superclass dengan isi yang berbeda.
 
 2. Bagaimana Java menentukan method mana yang dipanggil dalam dynamic binding?
-   **Jawaban:**Java menentukan method yang dipanggil berdasarkan tipe objek aktual saat runtime, bukan berdasarkan tipe referensinya.
+   **Jawaban:** Java menentukan method yang dipanggil berdasarkan tipe objek aktual saat runtime, bukan berdasarkan tipe referensinya.
 Artinya, meskipun objek disimpan dalam variabel bertipe superclass, method yang dijalankan tetap berasal dari subclass yang sebenarnya.
 
 3. Berikan contoh kasus polymorphism dalam sistem POS selain produk pertanian
-   **Jawaban:**Contohnya pada sistem POS restoran:
+   **Jawaban:** Contohnya pada sistem POS restoran:
 Superclass MenuItem memiliki method getInfo().
 Subclass-nya seperti Makanan, Minuman, dan PaketCombo masing-masing mengoverride method getInfo() untuk menampilkan detail berbeda sesuai jenis menu.
