@@ -1,0 +1,33 @@
+@startuml uml_sequence_payment
+actor Kasir
+participant UI as "POS UI"
+participant PaymentService
+participant PaymentFactory
+participant PaymentMethod
+participant PG as "Payment Gateway"
+participant ReceiptService
+
+Kasir -> UI: tambah item, checkout()
+UI -> PaymentService: createTransaction(cart)
+PaymentService -> PaymentFactory: getPaymentMethod(type)
+alt tunai
+  PaymentFactory --> PaymentService: CashPayment
+  PaymentService -> PaymentMethod: pay(amount)
+  PaymentMethod --> PaymentService: paymentResult(success)
+else e-wallet
+  PaymentFactory --> PaymentService: EWalletPayment
+  PaymentService -> PaymentMethod: pay(amount)
+  PaymentMethod -> PG: charge(amount, walletId)
+  alt PG success
+    PG --> PaymentMethod: success
+    PaymentMethod --> PaymentService: paymentResult(success)
+  else PG fail
+    PG --> PaymentMethod: failed(reason)
+    PaymentMethod --> PaymentService: paymentResult(failed)
+  end
+end
+
+PaymentService -> ReceiptService: generateReceipt(transaction)
+ReceiptService --> UI: receiptData
+UI --> Kasir: tampilkan struk
+@enduml
