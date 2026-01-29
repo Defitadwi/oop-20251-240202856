@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<HBox spacing="20" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.upb.agripos.controller.PosController" style="-fx-background-color: #f4f4f4;">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <VBox spacing="15" prefWidth="550" style="-fx-border-color: #cccccc; -fx-padding: 15; -fx-background-color: white;">
+        <Label text="Daftar Produk (Database)" style="-fx-font-weight: bold;">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+
+        <TableView fx:id="productTable" prefHeight="350">
+            <columns>
+                <TableColumn fx:id="colId" text="Kode" prefWidth="80" />
+                <TableColumn fx:id="colName" text="Nama" prefWidth="150" />
+                <TableColumn fx:id="colCategory" text="Kategori" prefWidth="100" />
+                <TableColumn fx:id="colPrice" text="Harga" prefWidth="100" />
+                <TableColumn fx:id="colStock" text="Stok" prefWidth="70" />
+            </columns>
+        </TableView>
+
+        <GridPane hgap="10" vgap="10">
+            <TextField fx:id="txtId" promptText="Kode" GridPane.rowIndex="0" GridPane.columnIndex="0" prefWidth="150"/>
+            <TextField fx:id="txtName" promptText="Nama" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="250"/>
+            <TextField fx:id="txtCategory" promptText="Kategori" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtPrice" promptText="Harga" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="txtStock" promptText="Stok" GridPane.rowIndex="1" GridPane.columnIndex="2" prefWidth="80"/>
+        </GridPane>
+
+        <HBox spacing="10">
+            <Button text="Simpan Baru" onAction="#handleSimpan" prefWidth="100" />
+            <Button text="Update Data" onAction="#handleUpdate" prefWidth="100" style="-fx-background-color: #ffc107;" />
+            <Button text="Hapus" onAction="#handleHapus" prefWidth="80" style="-fx-background-color: #f44336; -fx-text-fill: white;" />
+            <Button text="Reset Form" onAction="#handleReset" prefWidth="100" />
+        </HBox>
+
+        <Separator />
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Label text="Qty:" />
+            <TextField fx:id="txtQty" text="1" prefWidth="60" />
+            <Button text="Masuk Keranjang &gt;&gt;" onAction="#handleMasukKeranjang" style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: bold;" prefWidth="180"/>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="15" prefWidth="450" alignment="TOP_CENTER">
+        <Label text="Keranjang Belanja" style="-fx-font-weight: bold;">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Label>
+
+        <TableView fx:id="cartTable" prefHeight="400">
+            <columns>
+                <TableColumn fx:id="colCartItem" text="Item" prefWidth="200" />
+                <TableColumn fx:id="colCartQty" text="Qty" prefWidth="80" />
+                <TableColumn fx:id="colCartSubtotal" text="Subtotal" prefWidth="150" />
+            </columns>
+        </TableView>
+
+        <HBox alignment="CENTER_LEFT">
+            <Label fx:id="lblTotal" text="Total: Rp 0" style="-fx-text-fill: blue; -fx-font-weight: bold;">
+                <font>
+                    <Font size="22.0" />
+                </font>
+            </Label>
+        </HBox>
+
+        <Button text="BAYAR SEKARANG" onAction="#handleBayar" prefWidth="450" prefHeight="40" 
+                style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold;">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+
+        <Button text="Kosongkan Keranjang" onAction="#handleKosongkanKeranjang" prefWidth="450" 
+                style="-fx-background-color: #ffcdd2; -fx-text-fill: #b71c1c;" />
+    </VBox>
+</HBox>
